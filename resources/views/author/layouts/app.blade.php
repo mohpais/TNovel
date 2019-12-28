@@ -64,6 +64,7 @@
 			toastr.success("{{Session::get('success')}}", ":)")
 		@endif
 	</script>
+	{{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
 	@yield('js')
 </body>
 

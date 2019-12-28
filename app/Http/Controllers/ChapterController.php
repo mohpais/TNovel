@@ -54,7 +54,7 @@ class ChapterController extends Controller
         $chapter->slug = str_slug($chapter->judul.'-Chapter-'.$chapter->chapter);
         $chapter->description = $request->description;
         $chapter->update();
-        return redirect('/novel')->with('success', 'Data Berhasil di Update');
+        return redirect()->back()->with('success', 'Data Berhasil di Update');
     }
 
     public function destroy($id)

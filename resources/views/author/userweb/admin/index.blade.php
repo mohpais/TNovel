@@ -42,7 +42,8 @@
                                                 </td>
                                                 <td>
                                                     <a href="/userweb/{{$data->id}}/profile" class="btn btn-primary btn-sm"><span class="lnr lnr-user"></span></a>
-                                                    <a href="/userweb/{{$data->id}}/destroy" class="btn btn-danger btn-sm" onclick="return confirm('Anda ingin menghapus novel ini?')"><span class="lnr lnr-trash"></span></a>
+                                                    {{-- <a href="/userweb/{{$data->id}}/destroy" class="btn btn-danger btn-sm" onclick="return confirm('Anda ingin menghapus novel ini?')"><span class="lnr lnr-trash"></span></a> --}}
+                                                    <a href="#" id="catchId" class="btn btn-danger btn-sm " userId="{{$data->id}}"><span class="lnr lnr-trash"></span></a>
                                                     <a href="/profile/{{$data->id}}/edit" class="btn btn-warning btn-sm"><span class="lnr lnr-pencil"></span></a>
                                                 </td>
                                             </tr>
@@ -58,4 +59,31 @@
         </div>
     </div>
     @include('author.inc.modal_user')
+    
+@stop
+
+@section('js')
+<script>
+        $('#catchId').click(function() {
+            var user_id = $(this).attr('userId');
+            alert(user_id);
+        })
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+                });
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+        });
+    </script>
+    
 @endsection
